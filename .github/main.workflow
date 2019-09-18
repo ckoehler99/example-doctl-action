@@ -19,7 +19,7 @@ action "Build Docker image" {
   needs = ["Add commit SHA"]
   uses = "actions/docker/cli@master"
   env = {
-    DOCKER_USERNAME = "andrewsomething"
+    DOCKER_USERNAME = "ckoehler99"
     APPLICATION_NAME = "static-example"
   }
   args = ["build", "-t", "$DOCKER_USERNAME/$APPLICATION_NAME:$(echo $GITHUB_SHA | head -c7)", "."]
@@ -34,7 +34,7 @@ action "Push image to Docker Hub" {
   needs = ["Docker Login", "Build Docker image"]
   uses = "actions/docker/cli@master"
   env = {
-    DOCKER_USERNAME = "andrewsomething"
+    DOCKER_USERNAME = "ckoehler99"
     APPLICATION_NAME = "static-example"
   }
   args = ["push", "$DOCKER_USERNAME/$APPLICATION_NAME"]
